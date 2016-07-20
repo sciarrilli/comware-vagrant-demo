@@ -11,7 +11,7 @@ https://hpenterprise.sharepoint.com/teams/ams-dc-cse/Shared%20Documents/vagrant_
 
 vagrant box add /path/to/vsr.box --name vsr
 
-# git clone
+# Run the demo
 git clone https://github.com/sciarrilli/comware-vagrant-demo.git <br>
 cd comware-vagrant-demo <br>
 vagrant up workbench <br>
