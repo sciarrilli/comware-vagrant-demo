@@ -1,0 +1,15 @@
+# DHCP Pools
+#################################
+# localpool
+#################################
+subnet {{ wbench_eth1_network }} netmask {{ wbench_eth1_mask }} {
+  pool
+  {
+    range {{ wbench_dhcp_range_start }} {{ wbench_dhcp_range_end }};
+  }
+
+  option subnet-mask {{ wbench_eth1_mask }};
+  option routers {{ wbench_eth1_ip }};
+  option tftp-server-name "{{ wbench_eth1_ip }}";
+  option bootfile-name "boot.py";
+}

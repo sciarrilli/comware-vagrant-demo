@@ -1,0 +1,11 @@
+service tftp
+{
+protocol = udp
+port = 69
+socket_type = dgram
+wait = yes
+server = /usr/sbin/in.tftpd
+server_args = /tftpboot
+disable = no
+user = nobody
+}

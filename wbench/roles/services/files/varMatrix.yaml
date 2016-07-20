@@ -1,0 +1,20 @@
+---
+  5c8a38cc8dae:
+    sysname: spine01
+    mgmt_ip: 10.79.10.18
+    mgmt_subnet: 255.255.255.0
+    gateway: 10.79.10.1
+    local_user: nick
+    passwd: trestles
+    tftpServer: 10.79.10.95
+    fanDirection: port-to-power
+
+  5c8a38b79c0e:
+    sysname: leaf01
+    mgmt_ip: 10.79.10.19
+    mgmt_subnet: 255.255.255.0
+    gateway: 10.79.10.1
+    local_user: nick
+    passwd: trestles
+    tftpServer: 10.79.10.95
+    fanDirection: port-to-power

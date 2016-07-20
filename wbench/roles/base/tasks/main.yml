@@ -1,0 +1,117 @@
+# create cumulus user
+#- name: create cumulus
+#  user: name=cumulus generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa
+
+# set the hostname
+- name: set hostname
+  hostname:  name={{ wbench_hostname }}
+
+# add motd
+- name: configure /etc/motd
+  template: src=motd.j2 dest=/etc/motd
+
+# update the hosts file
+- name: add hosts entries
+  template: src=hosts.j2 dest=/etc/hosts
+
+- name: add bash colors for root
+  copy: src=bashrc dest=/root/.bashrc
+
+- name: add bash colors for vagrant
+  copy: src=bashrc dest=/home/vagrant/.bashrc
+
+# update apt source list
+- name: install apt source list
+  template: src=apt_sources.list.j2  dest=/etc/apt/sources.list
+
+# install ansible
+#- name: install git
+#  apt: name={{item}} state=present
+#  with_items:
+#    - software-properties-common
+
+# install latest ansible version but its doesn't work with comware devices
+#- name: add ansible repo
+#  apt_repository: repo={{item}}
+#  with_items:
+#    - ppa:ansible/ansible
+
+#- name: update apt cache
+#  apt: update_cache=yes
+
+#- name: install ansible
+#  apt: pkg=ansible state=present
+- name: apt update and upgrade
+  apt: update_cache=yes upgrade=dist
+
+# install base packages
+- name: install base packages
+  apt: name={{item}} state=present
+  with_items:
+    - git
+    - curl
+    - man
+    - bash-completion
+    - python-paramiko
+    - python-lxml
+    - vim
+    - python-pip
+    - xinetd
+    - tftpd
+    - tftp
+
+- name: download ansible 2.0.1
+  unarchive: src=http://releases.ansible.com/ansible/ansible-2.0.1.0.tar.gz dest=/home/vagrant/ copy=no
+
+- name: ansible setup.py build
+  shell: /usr/bin/python /home/vagrant/ansible-2.0.1.0/setup.py build
+  become: true
+  become_method: sudo
+  args:
+    chdir: /home/vagrant/ansible-2.0.1.0
+
+- name: ansible setup.py install
+  shell: /usr/bin/python /home/vagrant/ansible-2.0.1.0/setup.py install
+  become: true
+  become_method: sudo
+  args:
+    chdir: /home/vagrant/ansible-2.0.1.0
+
+- name: create ansible symlinks
+  file: src=/usr/local/bin/{{ item }} dest=/usr/bin/{{ item }} state=link
+  with_items:
+    - ansible
+    - ansible-playbook
+    - ansible-doc
+
+- name: remove ansible directory
+  file: path=/home/vagrant/ansible-2.0.1.0 state=absent
+
+- name: git clone pyhpecw7
+  git: repo=https://github.com/HPENetworking/pyhpecw7.git dest=/home/vagrant/pyhpecw7
+  become: yes
+  become_user: vagrant
+
+- name: install prereq for pyhpecw7
+  pip: name={{item}}
+  become: yes
+  become_method: sudo
+  with_items:
+    - gtextfsm
+    - lxml
+    - ncclient
+    - scp
+    - ipaddr
+    - paramiko
+
+- name: install pyhpecw7 library
+  shell: /usr/bin/python /home/vagrant/pyhpecw7/setup.py install
+  become: true
+  become_method: sudo
+  args:
+    chdir: /home/vagrant/pyhpecw7
+
+- name: git clone cw7-ansible repo
+  git: repo=https://github.com/sciarrilli/cw7-ansible.git dest=/home/vagrant/cw7-ansible
+  become: yes
+  become_user: vagrant

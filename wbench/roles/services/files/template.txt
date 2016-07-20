@@ -1,0 +1,29 @@
+#
+sysname {{ switchList[switch]["sysname"] }}
+
+interface M-GigabitEthernet0/0/0
+ ip address {{ switchList[switch]["mgmt_ip"] }} {{ switchList[switch]["mgmt_subnet"] }}
+
+#
+
+local-user {{ switchList[switch]["local_user"]}}
+ password simple {{ switchList[switch]["passwd"]}}
+ service-type ssh http https
+ authorization-attribute user-role network-admin
+#
+line vty 0 15
+ authentication-mode scheme
+ user-role network-admin
+
+
+ssh server enable
+ssh user hp service-type all authentication-type password
+
+
+netconf ssh server enable
+
+
+scp server enable
+
+
+ip route-static 0.0.0.0 0.0.0.0 {{ switchList[switch]["gateway"] }}

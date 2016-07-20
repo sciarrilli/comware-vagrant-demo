@@ -1,0 +1,51 @@
+# networking
+wbench_hostname: 'cware-wbench'
+wbench_user: 'Vagrant'
+wbench_passwd: '$6$wJ9OETRI$KX2hMXIuGXtXjMQwH58AsFWpQRnSHKT2OF/6GfPSxqD4e.kF.eyUQeWhnOAg5OxEuCHsOLYybweFv3HmPdBw7/'
+wbench_eth1_network: '192.168.0.0'
+wbench_eth1_ip: '192.168.0.254' #  update this according to customer
+wbench_eth1_mask: '255.255.255.0'
+
+wbench_dhcp_range_start: '192.168.0.100'
+wbench_dhcp_range_end: '192.168.0.200'
+
+dns_search1: 'lab.local'
+dns_server: '8.8.8.8'
+
+ntp_server: '0.north-america.pool.ntp.org'
+
+wbench_hosts: {}
+ubuntu_apt_server: 'mirror.n5tech.com'
+
+
+switches:
+  spine01:
+    mac: 'A0:00:00:00:00:21'
+    eth0: '192.168.0.21'
+  spine02:
+    mac: 'A0:00:00:00:00:22'
+    eth0: '192.168.0.22'
+  spine03:
+    mac: 'A0:00:00:00:00:23'
+    eth0: '192.168.0.23'
+  spine04:
+    mac: 'A0:00:00:00:00:24'
+    eth0: '192.168.0.24'
+  leaf01:
+    mac: 'A0:00:00:00:00:11'
+    eth0: '192.168.0.11'
+  leaf02:
+    mac: 'A0:00:00:00:00:12'
+    eth0: '192.168.0.12'
+  leaf03:
+    mac: 'A0:00:00:00:00:13'
+    eth0: '192.168.0.13'
+  leaf04:
+    mac: 'A0:00:00:00:00:14'
+    eth0: '192.168.0.14'
+  leaf05:
+    mac: 'A0:00:00:00:00:15'
+    eth0: '192.168.0.15'
+  leaf06:
+    mac: 'A0:00:00:00:00:16'
+    eth0: '192.168.0.16'
