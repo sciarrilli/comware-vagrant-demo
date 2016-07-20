@@ -1,4 +1,7 @@
-# comware-vagrant-demo
+# Comware Vagrant Demo <br>
+<br>
+# Please follow these steps carefully
+
 # Prerequisites
 
 This demo requires vagrant, virtualbox and ansible are installed on the same box.
