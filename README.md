@@ -23,7 +23,7 @@ vagrant ssh workbench <br>
 cd cw7-ansible <br>
 ansible-playbook vsr-ping.yml <br>
 ansible-playbook demo.yml <br>
-ssh comware@spine01
-password is comware
-display ip route
-display ip bgp neighbors
+ssh comware@leaf01 <br>
+password is comware <br>
+display ip route <br>
+display ip bgp neighbors <br>
