@@ -1,0 +1,20 @@
+---
+  5c8a38cc8dae:
+    sysname: spine01
+    mgmt_ip: 192.168.0.21
+    mgmt_subnet: {{ wbench_eth1_mask }}
+    gateway: {{ wbench_eth1_ip }}
+    local_user: comware
+    passwd: comware
+    tftpServer: {{ wbench_eth1_ip }}
+    fanDirection: port-to-power
+
+  5c8a38b79c0e:
+    sysname: leaf01
+    mgmt_ip: 192.168.0.11
+    mgmt_subnet: {{ wbench_eth1_mask }}
+    gateway: {{ wbench_eth1_ip }}
+    local_user: comware
+    passwd: comware
+    tftpServer: {{ wbench_eth1_ip }}
+    fanDirection: port-to-power

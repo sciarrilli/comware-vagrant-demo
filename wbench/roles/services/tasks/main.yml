@@ -56,14 +56,14 @@
   file: path=/tftpboot state=directory mode=0777 owner=nobody
   notify: restart xinetd
 
-- name: copy boot.py
-  copy: src=boot.py dest=/tftpboot/boot.py mode=0777 owner=nobody
-
 - name: copy template
   copy: src=template.txt dest=/tftpboot/template.txt mode=0777 owner=nobody
 
+#- name: copy boot.py
+#  template: src=boot.py.j2 dest=/tftpboot/boot.py mode=0777 owner=nobody
+
 - name: copy varMatrix.yaml
-  copy: src=varMatrix.yaml dest=/tftpboot/varMatrix.yaml mode=0777 owner=nobody
+  template: src=varMatrix.yaml.j2 dest=/tftpboot/varMatrix.yaml mode=0777 owner=nobody
 
 - name: copy varMatrix.json
-  copy: src=varMatrix.json dest=/tftpboot/varMatrix.json mode=0777 owner=nobody
+  template: src=varMatrix.json.j2 dest=/tftpboot/varMatrix.json mode=0777 owner=nobody
