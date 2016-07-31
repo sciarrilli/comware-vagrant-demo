@@ -20,6 +20,6 @@ cd comware-vagrant-demo <br>
 vagrant up workbench <br>
 vagrant up <br>
 vagrant ssh workbench <br>
-cd cw7-ansible
-ansible-playbook vsr-ping.yml
-ansible-playbook demo.yml
+cd cw7-ansible <br>
+ansible-playbook vsr-ping.yml <br>
+ansible-playbook demo.yml <br>
