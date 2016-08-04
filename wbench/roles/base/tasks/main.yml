@@ -59,6 +59,7 @@
     - xinetd
     - tftpd
     - tftp
+    - nano
 
 - name: download ansible 2.0.1
   unarchive: src=http://releases.ansible.com/ansible/ansible-2.0.1.0.tar.gz dest=/home/vagrant/ copy=no
