@@ -10,9 +10,9 @@ This demo will run on Mac OS X or Linux
 
 # VSR box setup
 Download the VSR vagrant box from: <br>
-https://www.yammer.com/api/v1/uploaded_files/64471326/download
+https://www.yammer.com/api/v1/uploaded_files/64471326/download <br>
 or <br>
-https://hpenterprise.sharepoint.com/teams/ams-dc-cse/Shared%20Documents/vagrant_vsr/golden-vsr.box
+https://hpenterprise.sharepoint.com/teams/ams-dc-cse/Shared%20Documents/vagrant_vsr/golden-vsr.box <br>
 
 vagrant box add /path/to/golden-vsr.box --name vsr
 
